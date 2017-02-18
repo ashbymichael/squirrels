@@ -1,11 +1,13 @@
 <nav>
   <div class="title">
-    <span class="nav-item">squirrels!</span>
+    <span class="nav-item"><%= link_to 'squirrels!', root_path %></span>
   </div>
   <div class="menu">
     <ul>
-      <% if current_user %>
-        <li class="nav-item"><%= link_to 'log out', logout_path, method: :delete %></li>
+      <% if logged_in? %>
+        <li class="nav-item">
+          <%= link_to 'log out', logout_path, method: :delete %>
+        </li>
       <% else %>
         <li class="nav-item"><%= link_to 'log in', login_path %></li>
         <li class="nav-item"><%= link_to 'sign up', new_user_path %></li>
