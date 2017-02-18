@@ -12,8 +12,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    if user = user.find_by_id(params[:id])
-      log_out(user)
+    if user = User.find_by_id(session[:user_id])
+      log_out
       flash[:notice] = "So long, #{user.username}"
       redirect_to root_url
     else

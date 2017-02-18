@@ -1,7 +1,6 @@
 class SquirrelsController < ApplicationController
   def index
-    @squirrel = Squirrel.first
-    @tree = Tree.first
+    @squirrels = Squirrel.all
   end
 
   def show
@@ -11,5 +10,10 @@ class SquirrelsController < ApplicationController
 
   def new
     @squirrel = Squirrel.new
+  end
+
+  private
+  def squirrel_params
+    params.require(:squirrel).permit(:name, :image)
   end
 end
